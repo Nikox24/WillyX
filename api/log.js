@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     embeds: [
       {
         color: 0x2f3136,
-        title: '📡 Visitor Info',
+        title: ' Visitor Info',
         fields: [
           { name: 'IP', value: data.ip || 'Unknown' },
           { name: 'City', value: data.city || 'Unknown', inline: true },
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
       },
       {
         color: 0x2f3136,
-        title: '🖥️ Device Info',
+        title: ' Device Info',
         fields: [
           { name: 'OS', value: data.os || 'Unknown', inline: true },
           { name: 'Mobile', value: String(data.mobile), inline: true },

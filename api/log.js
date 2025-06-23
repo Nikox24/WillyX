@@ -50,11 +50,11 @@ export default async function handler(req, res) {
           { name: 'OS', value: data.os || 'Unknown', inline: true },
           { name: 'Mobile', value: String(data.mobile), inline: true },
           { name: 'Browser', value: data.browser || 'Unknown', inline: true },
-          { name: 'Memory', value: `${data.memory} GB`, inline: true },
-          { name: 'Battery', value: `${data.battery}%`, inline: true },
-          { name: 'Charging', value: String(data.charging), inline: true },
-          { name: 'Screen', value: data.screen, inline: true },
-          { name: 'Viewport', value: data.viewport, inline: true }
+          { name: 'Memory', value: `${data.memory ?? 'Unknown'} GB`, inline: true },
+          { name: 'Battery', value: `${data.battery ?? 'Unknown'}%`, inline: true },
+          { name: 'Charging', value: String(data.charging ?? 'Unknown'), inline: true },
+          { name: 'Screen', value: data.screen || 'Unknown', inline: true },
+          { name: 'Viewport', value: data.viewport || 'Unknown', inline: true }
         ]
       }
     ]
